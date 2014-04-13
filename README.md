@@ -5,11 +5,11 @@ A very simple todo list trying to see how I can use [AngularJS][1] with [Clojure
 
 ### build the app
 
-  $ lein cljsbuild once
+    $ lein cljsbuild once
 
 ### running the specs
 
-  $ lein cljsbuild auto dev
+    $ lein cljsbuild auto dev
 
 ### try out the app
 
