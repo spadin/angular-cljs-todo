@@ -1,9 +1,8 @@
 (ns angular-cljs-todo.core
-  (:use-macros [purnam.core :only [! def* def*n]]))
+  (:use-macros [purnam.core :only [! def* def*n]]
+               [gyr.core    :only [def.module def.controller]]))
 
-(defn expose [src dest]
-  (let [dest (name dest)]
-    (! js/window.|dest| src)))
+(def.module todo-app [])
 
 (def* todos [{:text "clean dishes"
               :done false}
@@ -18,8 +17,6 @@
                :done false})
   (clear-new-todo-text this))
 
-(def*n todo-controller [$scope]
+(def.controller todo-app.todo-controller [$scope]
   (! $scope.todos todos)
   (! $scope.addTodo add-todo))
-
-(expose todo-controller :TodoController)
