@@ -22278,41 +22278,30 @@ cljs.core.special_symbol_QMARK_ = function special_symbol_QMARK_(x) {
   null, new cljs.core.Symbol(null, ".", ".", -1640531481, null), null, new cljs.core.Symbol(null, "ns", "ns", -1640528002, null), null, new cljs.core.Symbol(null, "do", "do", -1640528316, null), null, new cljs.core.Symbol(null, "fn*", "fn*", -1640430053, null), null, new cljs.core.Symbol(null, "throw", "throw", -1530191713, null), null, new cljs.core.Symbol(null, "letfn*", "letfn*", 1548249632, null), null, new cljs.core.Symbol(null, "js*", "js*", -1640426054, null), null, new cljs.core.Symbol(null, 
   "defrecord*", "defrecord*", 774272013, null), null, new cljs.core.Symbol(null, "let*", "let*", -1637213400, null), null, new cljs.core.Symbol(null, "loop*", "loop*", -1537374273, null), null, new cljs.core.Symbol(null, "try", "try", -1640416396, null), null, new cljs.core.Symbol(null, "if", "if", -1640528170, null), null, new cljs.core.Symbol(null, "def", "def", -1640432194, null), null], true), x)
 };
-goog.provide("angular_cljs_todo.core_spec");
-goog.require("cljs.core");
 goog.provide("angular_cljs_todo.core");
 goog.require("cljs.core");
 angular_cljs_todo.core.todo_app = angular.module("todo-app", []);
-angular_cljs_todo.core.todos = [function() {
-  var G__5346 = {};
-  G__5346["text"] = "clean dishes";
-  G__5346["done"] = false;
-  return G__5346
-}(), function() {
-  var G__5348 = {};
-  G__5348["text"] = "throw out garbage";
-  G__5348["done"] = false;
-  return G__5348
-}()];
+angular_cljs_todo.core.new_todo = function new_todo(text) {
+  var G__5293 = {};
+  G__5293["text"] = text;
+  G__5293["done"] = false;
+  return G__5293
+};
+angular_cljs_todo.core.todos = [angular_cljs_todo.core.new_todo.call(null, "clean dishes"), angular_cljs_todo.core.new_todo.call(null, "throw out garbage")];
 angular_cljs_todo.core.clear_new_todo_text = function clear_new_todo_text($scope) {
   var o_SHARP_ = $scope;
   delete o_SHARP_["newTodoText"];
   return o_SHARP_
 };
 angular_cljs_todo.core.add_todo = function add_todo(text) {
-  var obj_SHARP__5354 = angular_cljs_todo.core.todos;
-  var fn_SHARP__5355 = obj_SHARP__5354["push"];
-  fn_SHARP__5355.call(obj_SHARP__5354, function() {
-    var G__5352 = {};
-    G__5352["text"] = text;
-    G__5352["done"] = false;
-    return G__5352
-  }());
+  var obj_SHARP__5295 = angular_cljs_todo.core.todos;
+  var fn_SHARP__5296 = obj_SHARP__5295["push"];
+  fn_SHARP__5296.call(obj_SHARP__5295, angular_cljs_todo.core.new_todo.call(null, text));
   return angular_cljs_todo.core.clear_new_todo_text.call(null, this)
 };
 angular_cljs_todo.core.todo_app_todo_controller = ["$scope", function($scope) {
-  var o_SHARP__5356 = $scope;
-  o_SHARP__5356["todos"] = angular_cljs_todo.core.todos;
+  var o_SHARP__5297 = $scope;
+  o_SHARP__5297["todos"] = angular_cljs_todo.core.todos;
   var o_SHARP_ = $scope;
   o_SHARP_["addTodo"] = angular_cljs_todo.core.add_todo;
   return o_SHARP_

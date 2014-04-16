@@ -22280,44 +22280,30 @@ cljs.core.special_symbol_QMARK_ = function special_symbol_QMARK_(x) {
 };
 goog.provide("angular_cljs_todo.core");
 goog.require("cljs.core");
-angular_cljs_todo.core.expose = function expose(src, dest) {
-  var dest__$1 = cljs.core.name.call(null, dest);
-  var o_SHARP_ = window;
-  o_SHARP_[dest__$1] = src;
-  return o_SHARP_
+angular_cljs_todo.core.todo_app = angular.module("todo-app", []);
+angular_cljs_todo.core.new_todo = function new_todo(text) {
+  var G__6167 = {};
+  G__6167["text"] = text;
+  G__6167["done"] = false;
+  return G__6167
 };
-angular_cljs_todo.core.todos = [function() {
-  var G__5206 = {};
-  G__5206["text"] = "clean dishes";
-  G__5206["done"] = false;
-  return G__5206
-}(), function() {
-  var G__5208 = {};
-  G__5208["text"] = "throw out garbage";
-  G__5208["done"] = false;
-  return G__5208
-}()];
+angular_cljs_todo.core.todos = [angular_cljs_todo.core.new_todo.call(null, "clean dishes"), angular_cljs_todo.core.new_todo.call(null, "throw out garbage")];
 angular_cljs_todo.core.clear_new_todo_text = function clear_new_todo_text($scope) {
   var o_SHARP_ = $scope;
   delete o_SHARP_["newTodoText"];
   return o_SHARP_
 };
 angular_cljs_todo.core.add_todo = function add_todo(text) {
-  var obj_SHARP__5214 = angular_cljs_todo.core.todos;
-  var fn_SHARP__5215 = obj_SHARP__5214["push"];
-  fn_SHARP__5215.call(obj_SHARP__5214, function() {
-    var G__5212 = {};
-    G__5212["text"] = text;
-    G__5212["done"] = false;
-    return G__5212
-  }());
+  var obj_SHARP__6169 = angular_cljs_todo.core.todos;
+  var fn_SHARP__6170 = obj_SHARP__6169["push"];
+  fn_SHARP__6170.call(obj_SHARP__6169, angular_cljs_todo.core.new_todo.call(null, text));
   return angular_cljs_todo.core.clear_new_todo_text.call(null, this)
 };
-angular_cljs_todo.core.todo_controller = function todo_controller($scope) {
-  var o_SHARP__5216 = $scope;
-  o_SHARP__5216["todos"] = angular_cljs_todo.core.todos;
+angular_cljs_todo.core.todo_app_todo_controller = ["$scope", function($scope) {
+  var o_SHARP__6171 = $scope;
+  o_SHARP__6171["todos"] = angular_cljs_todo.core.todos;
   var o_SHARP_ = $scope;
   o_SHARP_["addTodo"] = angular_cljs_todo.core.add_todo;
   return o_SHARP_
-};
-angular_cljs_todo.core.expose.call(null, angular_cljs_todo.core.todo_controller, new cljs.core.Keyword(null, "TodoController", "TodoController", 4049815572));
+}];
+angular.module("todo-app").controller("todo-controller", angular_cljs_todo.core.todo_app_todo_controller);
